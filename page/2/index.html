@@ -238,6 +238,140 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/08/在Windows下bat自动设置IP/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="dminter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://om0x75dce.bkt.clouddn.com/blog/20170228/171000643.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="为而不争">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="为而不争" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/08/在Windows下bat自动设置IP/" itemprop="url">
+                  在Windows下bat自动设置IP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-08T09:03:22+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通常情况都是利用路由器DHCP功能自动获取IP地址，可是往往在公司环境，DHCP功能开启会导致不同网段相互干扰导致一片区域均不可上网的问题，因而，网管索性关闭了DHCP，转而叫同事各自设置自己的IP，Windows虽然有一套设置IP的方法，也干不翻做IT的午我们，但是，也不乏有不会用的，对此利用Windows命令行参考网上教程写了一个bat解决此困扰。</p>
+<h2 id="IP末尾取值"><a href="#IP末尾取值" class="headerlink" title="IP末尾取值"></a>IP末尾取值</h2><p>4个字节，0~255，暂不讨论此IP已被占用，需要一个随机末尾数。</p>
+<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><pre><code>set /a n=%random%%%255+1
+echo %n%
+pause 
+</code></pre><h2 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h2><pre><code>netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;223.5.5.5&quot;  register=PRIMARY
+netsh interface ip add dns name=&quot;本地连接&quot; addr=&quot;223.6.6.6&quot; index=2
+pause 
+</code></pre><h2 id="IPsetting-bat"><a href="#IPsetting-bat" class="headerlink" title="IPsetting.bat"></a>IPsetting.bat</h2><pre><code>set /a n=%random%%%255+1
+netsh interface ip set address name=&quot;本地连接&quot; source=&quot;static&quot; addr=&quot;192.168.1.%n%&quot; mask=&quot;255.255.255.0&quot; gateway=&quot;192.168.1.254&quot; gwmetric=&quot;1&quot;
+netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;223.5.5.5&quot;  register=PRIMARY
+netsh interface ip add dns name=&quot;本地连接&quot; addr=&quot;223.6.6.6&quot; index=2
+pause 
+</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>若网络连接中，含有多个网络适配器需要指定一个上网的为“本地连接”<br><img src="http://om0x75dce.bkt.clouddn.com/blog/20170308/091358253.png" alt="mark"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/08/使用JRebel加快Android编译/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -628,129 +762,6 @@ project主gradle
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/07/DisplayPort接口/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="dminter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://om0x75dce.bkt.clouddn.com/blog/20170228/171000643.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="为而不争">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="为而不争" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/DisplayPort接口/" itemprop="url">
-                  DisplayPort接口
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T09:20:54+08:00">
-                2017-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="DisplayPort"><a href="#DisplayPort" class="headerlink" title="DisplayPort"></a>DisplayPort</h2><p>DisplayPort也是一种高清数字显示接口标准，可以连接电脑和显示器，也可以连接电脑和家庭影院。2006年5月，视频电子标准协会(VESA)确定了1.0版标准，2008年升级到1.1版，提供了对HDCP的支持。1.3版将总带宽提升到了32.4Gbps(4.05GB/s)，四条通道各自分配8.1Gbps。DisplayPort赢得了AMD、Intel、NVIDIA、戴尔、惠普、联想、飞利浦、三星、aoc等业界巨头的支持，而且它是免费使用的。</p>
-<h2 id="HDMI"><a href="#HDMI" class="headerlink" title="HDMI"></a>HDMI</h2><p>高清晰度多媒体接口（英文：High Definition Multimedia Interface，HDMI）是一种数字化视频/音频接口技术，是适合影像传输的专用型数字化接口，其可同时传送音频和影像信号，最高数据传输速度为18Gbps（2.0版）。<br>同时无需在信号传送前进行数/模或者模/数转换。<br>HDMI可搭配宽带数字内容保护（HDCP），以防止具有著作权的影音内容遭到未经授权的复制。<br>HDMI所具备的额外空间可应用在日后升级的音视频格式中。<br>而因为一个1080p的视频和一个8声道的音频信号需求少于0.5GB/s，因此HDMI还有很大余量。这允许它可以用一个电缆分别连接DVD播放器，接收器和PRR。</p>
-<h2 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h2><p>Thunderbolt是一种复合型接口,你可以理解成它可以把PCI-E 提供给外置设备<br>Mini-Displayport只支持显示<br>Thunderbolt现在在多数平台上是以Mini-Displayport接口的形式提供的</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/07/Terminal Help/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -851,6 +862,129 @@ Ctrl+0.还原
 </code></pre><h2 id="Fullscreen-session"><a href="#Fullscreen-session" class="headerlink" title="Fullscreen session"></a>Fullscreen session</h2><pre><code>F11全屏
 </code></pre><h2 id="Manage-profiles"><a href="#Manage-profiles" class="headerlink" title="Manage profiles"></a>Manage profiles</h2><pre><code>配置文件自定义
 </code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/07/DisplayPort接口/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="dminter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://om0x75dce.bkt.clouddn.com/blog/20170228/171000643.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="为而不争">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="为而不争" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/07/DisplayPort接口/" itemprop="url">
+                  DisplayPort接口
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T09:20:54+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="DisplayPort"><a href="#DisplayPort" class="headerlink" title="DisplayPort"></a>DisplayPort</h2><p>DisplayPort也是一种高清数字显示接口标准，可以连接电脑和显示器，也可以连接电脑和家庭影院。2006年5月，视频电子标准协会(VESA)确定了1.0版标准，2008年升级到1.1版，提供了对HDCP的支持。1.3版将总带宽提升到了32.4Gbps(4.05GB/s)，四条通道各自分配8.1Gbps。DisplayPort赢得了AMD、Intel、NVIDIA、戴尔、惠普、联想、飞利浦、三星、aoc等业界巨头的支持，而且它是免费使用的。</p>
+<h2 id="HDMI"><a href="#HDMI" class="headerlink" title="HDMI"></a>HDMI</h2><p>高清晰度多媒体接口（英文：High Definition Multimedia Interface，HDMI）是一种数字化视频/音频接口技术，是适合影像传输的专用型数字化接口，其可同时传送音频和影像信号，最高数据传输速度为18Gbps（2.0版）。<br>同时无需在信号传送前进行数/模或者模/数转换。<br>HDMI可搭配宽带数字内容保护（HDCP），以防止具有著作权的影音内容遭到未经授权的复制。<br>HDMI所具备的额外空间可应用在日后升级的音视频格式中。<br>而因为一个1080p的视频和一个8声道的音频信号需求少于0.5GB/s，因此HDMI还有很大余量。这允许它可以用一个电缆分别连接DVD播放器，接收器和PRR。</p>
+<h2 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h2><p>Thunderbolt是一种复合型接口,你可以理解成它可以把PCI-E 提供给外置设备<br>Mini-Displayport只支持显示<br>Thunderbolt现在在多数平台上是以Mini-Displayport接口的形式提供的</p>
+
           
         
       
@@ -1136,129 +1270,6 @@ Ctrl+0.还原
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/03/使用VirtualBox安装学习Ubuntu/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="dminter">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://om0x75dce.bkt.clouddn.com/blog/20170228/171000643.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="为而不争">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="为而不争" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/03/使用VirtualBox安装学习Ubuntu/" itemprop="url">
-                  使用VirtualBox安装学习Ubuntu
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T13:22:41+08:00">
-                2017-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="下载VirtualBox"><a href="#下载VirtualBox" class="headerlink" title="下载VirtualBox"></a>下载VirtualBox</h2><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">https://www.virtualbox.org/wiki/Downloads</a></p>
-<h2 id="下载Ubuntu"><a href="#下载Ubuntu" class="headerlink" title="下载Ubuntu"></a>下载Ubuntu</h2><p><a href="http://cn.ubuntu.com/download/" target="_blank" rel="external">http://cn.ubuntu.com/download/</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><img src="http://om0x75dce.bkt.clouddn.com/blog/20170303/132933061.png" alt="mark"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/03/linux学习笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1406,7 +1417,7 @@ rm -f 强制删除
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/03/SpaceSniffer/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/Dminter/2017/03/03/使用VirtualBox安装学习Ubuntu/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="dminter">
@@ -1431,8 +1442,8 @@ rm -f 强制删除
             
               
                 
-                <a class="post-title-link" href="/2017/03/03/SpaceSniffer/" itemprop="url">
-                  SpaceSniffer
+                <a class="post-title-link" href="/2017/03/03/使用VirtualBox安装学习Ubuntu/" itemprop="url">
+                  使用VirtualBox安装学习Ubuntu
                 </a>
               
             
@@ -1486,10 +1497,9 @@ rm -f 强制删除
       
         
           
-            <p>SpaceSniffer是一个可以让您硬盘中文件和文件夹的分布情况的应用程序。<br>通过使用TreeMap的可视化布局，你可以直观地看到在你硬盘上大的文件和文件夹。<br>SpaceSniffer可以很直观的以区块，数字和颜色来显示硬盘上文件夹，文件大小。还能用筛选器过滤出要找的文件。点击每个区块能进入该文件夹得到更详细的资料。</p>
-<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="http://www.uderzo.it/" target="_blank" rel="external">http://www.uderzo.it/</a></p>
-<p><a href="http://rj.baidu.com/soft/detail/26788.html?ald" target="_blank" rel="external">http://rj.baidu.com/soft/detail/26788.html?ald</a></p>
-<p><img src="http://om0x75dce.bkt.clouddn.com/blog/20170303/133054725.png" alt="mark"></p>
+            <h2 id="下载VirtualBox"><a href="#下载VirtualBox" class="headerlink" title="下载VirtualBox"></a>下载VirtualBox</h2><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">https://www.virtualbox.org/wiki/Downloads</a></p>
+<h2 id="下载Ubuntu"><a href="#下载Ubuntu" class="headerlink" title="下载Ubuntu"></a>下载Ubuntu</h2><p><a href="http://cn.ubuntu.com/download/" target="_blank" rel="external">http://cn.ubuntu.com/download/</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><img src="http://om0x75dce.bkt.clouddn.com/blog/20170303/132933061.png" alt="mark"></p>
 
           
         
@@ -1568,7 +1578,7 @@ rm -f 强制删除
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
