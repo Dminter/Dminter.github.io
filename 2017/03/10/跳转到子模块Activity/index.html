@@ -101,7 +101,7 @@ startActivity(intent);
 
 15:40:27 Application has stopped unexpectedly: Thread main failed:
 android.content.ActivityNotFoundExce">
-<meta property="og:updated_time" content="2017-03-10T09:16:53.974Z">
+<meta property="og:updated_time" content="2017-03-10T09:26:02.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跳转到子模块Activity">
 <meta name="twitter:description" content="Intent intent = new Intent(&amp;quot;com.zncm.imlibrary2.ImActivity2&amp;quot;);
@@ -350,13 +350,13 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:967)
     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:762)
 </code></pre><h2 id="正确做法-反射"><a href="#正确做法-反射" class="headerlink" title="正确做法-反射"></a>正确做法-反射</h2><pre><code>try {
-           Class&lt;?&gt; cls = Class.forName(&quot;com.xx.xx.talk.TalkActivity&quot;);
-           Intent intent = new Intent(ctx, cls);
-           intent.putExtra(&quot;friend_id&quot;, friend_id);// 对方ID
-           ctx.startActivity(intent);
-       } catch (ClassNotFoundException e) {
-           e.printStackTrace();
-       }
+       Class&lt;?&gt; cls = Class.forName(&quot;com.xx.xx.talk.TalkActivity&quot;);
+       Intent intent = new Intent(ctx, cls);
+       intent.putExtra(&quot;friend_id&quot;, friend_id);// 对方ID
+       ctx.startActivity(intent);
+   } catch (ClassNotFoundException e) {
+       e.printStackTrace();
+   }
 </code></pre>
       
     </div>
@@ -387,8 +387,8 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/10/Windows10打开IE浏览器/" rel="next" title="Windows10打开IE浏览器">
-                <i class="fa fa-chevron-left"></i> Windows10打开IE浏览器
+              <a href="/2017/03/10/小度WiFi驱动/" rel="next" title="小度WiFi驱动">
+                <i class="fa fa-chevron-left"></i> 小度WiFi驱动
               </a>
             
           </div>
@@ -396,6 +396,10 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/Snipaste简单但强大的截图工具/" rel="prev" title="Snipaste简单但强大的截图工具">
+                Snipaste简单但强大的截图工具 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -465,7 +469,7 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -525,7 +529,7 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
